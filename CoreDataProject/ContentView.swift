@@ -8,19 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
-    @FetchRequest(sortDescriptors: []) private var movies: FetchedResults<Movie>
+    @State private var filter = ""
     @State private var addMovieIsPresented = false
+    
+    private var predicate: NSPredicate? {
+        guard !filter.isEmpty else {
+            return nil
+        }
+        
+        let titleFilter = NSPredicate(format: "title CONTAINS[c] %@", filter)
+        let directorFilter = NSPredicate(format: "director CONTAINS[c] %@", filter)
+        
+        return NSCompoundPredicate(orPredicateWithSubpredicates: [
+            titleFilter,
+            directorFilter
+        ])
+    }
     
     var body: some View {
         NavigationView {
-            List(movies) { movie in
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(movie.wrappedTitle)
-                        .font(.headline)
-                    Text(movie.wrappedDirector)
-                        .font(.subheadline)
+            VStack {
+                TextField("Filter...", text: $filter)
+                    .padding()
+                    .disableAutocorrection(true)
+                FilteredList(predicate: predicate) { (movie: Movie) in
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(movie.wrappedTitle)
+                            .font(.headline)
+                        Text(movie.wrappedDirector)
+                            .font(.subheadline)
+                    }
+                    .padding(.vertical, 4)
                 }
-                .padding(.vertical, 4)
+                .listStyle(.insetGrouped)
             }
             .navigationTitle("Favorite movies")
             .toolbar {

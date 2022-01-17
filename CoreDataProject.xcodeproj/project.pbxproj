@@ -16,6 +16,7 @@
 		99486EC4278F9D6600B3FADA /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99486EC2278F9D6600B3FADA /* Movie+CoreDataClass.swift */; };
 		99486EC5278F9D6600B3FADA /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99486EC3278F9D6600B3FADA /* Movie+CoreDataProperties.swift */; };
 		99486EC7278FAA2300B3FADA /* AddMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99486EC6278FAA2300B3FADA /* AddMovieView.swift */; };
+		99677CF32795D738006F5085 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99677CF22795D738006F5085 /* FilteredList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		99486EC2278F9D6600B3FADA /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
 		99486EC3278F9D6600B3FADA /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		99486EC6278FAA2300B3FADA /* AddMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieView.swift; sourceTree = "<group>"; };
+		99677CF22795D738006F5085 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				99486EAF278F969700B3FADA /* CoreDataProjectApp.swift */,
 				99486EC6278FAA2300B3FADA /* AddMovieView.swift */,
 				99486EB1278F969700B3FADA /* ContentView.swift */,
+				99677CF22795D738006F5085 /* FilteredList.swift */,
 				99486EBD278F96BB00B3FADA /* DataController.swift */,
 				99486EBF278F96C900B3FADA /* CoreDataProject.xcdatamodeld */,
 				99486EB3278F969700B3FADA /* Assets.xcassets */,
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99677CF32795D738006F5085 /* FilteredList.swift in Sources */,
 				99486EB2278F969700B3FADA /* ContentView.swift in Sources */,
 				99486EBE278F96BB00B3FADA /* DataController.swift in Sources */,
 				99486EC7278FAA2300B3FADA /* AddMovieView.swift in Sources */,
