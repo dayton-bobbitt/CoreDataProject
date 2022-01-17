@@ -17,7 +17,7 @@ class DataController: ObservableObject {
                 fatalError("Failed to load persistent store: \(error.localizedDescription)")
             }
             
-            self.container.viewContext.mergePolicy = NSMergePolicy.rollback
+            self.container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         }
     }
 }

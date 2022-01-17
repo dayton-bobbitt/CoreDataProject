@@ -2,7 +2,7 @@
 //  Movie+CoreDataProperties.swift
 //  CoreDataProject
 //
-//  Created by Dayton Bobbitt on 1/12/22.
+//  Created by Dayton Bobbitt on 1/17/22.
 //
 //
 
@@ -17,8 +17,15 @@ extension Movie {
     }
 
     @NSManaged public var title: String?
-    @NSManaged public var director: String?
-    
+    @NSManaged public var director: Director?
+
+}
+
+extension Movie : Identifiable {
+
+}
+
+extension Movie {
     public var wrappedTitle: String {
         guard let title = title else {
             fatalError("Unexpected null value 'title'")
@@ -27,16 +34,11 @@ extension Movie {
         return title
     }
     
-    public var wrappedDirector: String {
+    public var wrappedDirector: Director {
         guard let director = director else {
             fatalError("Unexpected null value 'director'")
         }
 
         return director
     }
-
-}
-
-extension Movie : Identifiable {
-
 }

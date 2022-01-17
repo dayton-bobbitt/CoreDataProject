@@ -16,13 +16,7 @@ struct ContentView: View {
             return nil
         }
         
-        let titleFilter = NSPredicate(format: "title CONTAINS[c] %@", filter)
-        let directorFilter = NSPredicate(format: "director CONTAINS[c] %@", filter)
-        
-        return NSCompoundPredicate(orPredicateWithSubpredicates: [
-            titleFilter,
-            directorFilter
-        ])
+        return NSPredicate(format: "fullName CONTAINS[c] %@", filter)
     }
     
     var body: some View {
@@ -31,14 +25,12 @@ struct ContentView: View {
                 TextField("Filter...", text: $filter)
                     .padding()
                     .disableAutocorrection(true)
-                FilteredList(predicate: predicate) { (movie: Movie) in
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(movie.wrappedTitle)
-                            .font(.headline)
-                        Text(movie.wrappedDirector)
-                            .font(.subheadline)
+                FilteredList(predicate: predicate) { (director: Director) in
+                    Section(director.wrappedFullName) {
+                        ForEach(director.movieArray) { movie in
+                            Text(movie.wrappedTitle)
+                        }
                     }
-                    .padding(.vertical, 4)
                 }
                 .listStyle(.insetGrouped)
             }

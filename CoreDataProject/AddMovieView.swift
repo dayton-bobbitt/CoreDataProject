@@ -11,15 +11,15 @@ struct AddMovieView: View {
     @Environment(\.managedObjectContext) private var moc
     @Environment(\.dismiss) private var dismiss
     
-    @State private var title = ""
-    @State private var director = ""
+    @State private var movieTitle = ""
+    @State private var directorFullName = ""
     @State private var saveError = false
     
     var body: some View {
         NavigationView {
             Form {
-                TextField("Title", text: $title)
-                TextField("Director", text: $director)
+                TextField("Title", text: $movieTitle)
+                TextField("Director", text: $directorFullName)
             }
             .navigationTitle("Add a new movie")
             .toolbar {
@@ -49,14 +49,16 @@ struct AddMovieView: View {
     }
     
     private var isValidMovie: Bool {
-        !(title.isEmpty || director.isEmpty)
+        !(movieTitle.isEmpty || directorFullName.isEmpty)
     }
     
     private func saveMovie() {
         let movie = Movie(context: moc)
+        let director = Director(context: moc)
         
-        movie.title = title
+        movie.title = movieTitle
         movie.director = director
+        movie.director?.fullName = directorFullName
         
         do {
             try moc.save()
